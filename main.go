@@ -43,16 +43,16 @@ var CueSiteTemplate = `
       justify-content: center;
       flex-wrap: wrap; 
       background-color: #0D0D0C;
+      min-width: 480px;
     }
     .main-content {
       color: #f5f5f5;
-      font-eight: 700;
+      font-weight: 700;
       font-size: 10vh;
       display: flex;
       justify-content: top;
       text-align: center;
       padding-left: 12px;
-      min-width: 360px;
     }
     #bottom-container {
       margin: 0 auto;

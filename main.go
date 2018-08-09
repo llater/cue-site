@@ -31,12 +31,25 @@ import (
         </section>
         <section id="bottom-container">
           <div class="bottom-content">
+           <div class="gap"></div>
+           <section id="app">
           <h1>App</h1>
           <h2>Cue is a free app</h2>
-          <b4/><br/>
+           <div class="gap"></div>
+ </section>
+<section id="contact">
           <h1>Contact</h1>
-          <h2>bot at cue dot zone</h2>
-          <form action="/redirect-to-app" method="GET"><button type="submit">CONTACT</button></form>
+          <h2>bot @ cue.zone</h2>
+
+ <div class="gap"></div>
+</section>
+<section id="blog ">
+<h1>Blog</h1>
+<ul>
+  <li><h2>Playlists</h2></li>
+  <li><h2>Posts</h2></li>
+</ul>
+</section>
 </div>
        </section> 
        <section id="base">Cue Labs 2018</section>
@@ -97,34 +110,59 @@ background-color: #f5f5f5;
     font-weight: 700;
     text-align: center;
 background-color: #f5f5f5;
+    min-width: 190px;
 }
     #bottom-container {
       margin: 0 auto;
-      height: 200vh;
+      height: 320vh;
       width: 100vw;
       background-color: #7f1ae5;
       color: #0D0D0C;
     }
+
+.bottom-content {
+display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+ color: #0D0D0C;
+  width: 70vw;
+}
 .bottom-content h1 {
   font-size: 12vh;
-  text-shadow: 5px 5px #f5f5ff5;
+  text-shadow: 2px 2px #f5f5ff5;
+padding-left: 64px;
+}
+
+.gap {
+  width: 100vw;
+  height: 28vh;
+  margin: 0 auto;
 }
 .bottom-content h2 {
   font-size: 5vh;
-  text-shadow: 3px 4px #f5f5f0;
+  text-shadow: 5px 5px 10px #f5f5e1;
   font-wight: 300;
+   padding-bottom: 36px;
+   padding-left: 64px;
 }
 
-.bottom-content button {
-    font-size: 4vh;
-    width: 20vw;
-    height: 8vh;
-    border-radius: 10px;
-    border-width: 6px;
-    border-color: #7f1ae5;
-    font-weight: 700;
-    text-align: center;
-background-color: #f5f5f5;
+.bottom-content ul {
+  
+}
+
+.bottom-content ul li {
+  list-style: none;
+  font-size: 16vh;
+  font-weight: 700;
+  width: 40vw;
+  margin: 0 auto;
+}
+
+.bottom-content ul li h2 {
+  font-size: 8vh;
+  text-shadow: 5px 5px 10px #f5f5e1;
+  font-wight: 300;
 }
     #base {
   margin: 0 auto;

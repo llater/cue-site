@@ -3,7 +3,7 @@ RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.7/main >> /etc/apk/repositori
 RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.7/community >> /etc/apk/repositories
 RUN apk add --no-cache git ca-certificates
 RUN go get -u github.com/llater/cue-site \
-              github.com/gorilla/mux \
+              github.com/gorilla/mux
 WORKDIR /go/src/github.com/llater/cue-site
 RUN go build -v -o /tmp/cue-site .
 FROM alpine:3.7

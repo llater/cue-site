@@ -30,7 +30,14 @@ import (
           </div>
         </section>
         <section id="bottom-container">
-          <div class="bottom-content"></div>
+          <div class="bottom-content">
+          <h1>App</h1>
+          <h2>Cue is a free app</h2>
+          <b4/><br/>
+          <h1>Contact</h1>
+          <h2>bot at cue dot zone</h2>
+          <form action="/redirect-to-app" method="GET"><button type="submit">CONTACT</button></form>
+</div>
        </section> 
        <section id="base">Cue Labs 2018</section>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -98,6 +105,27 @@ background-color: #f5f5f5;
       background-color: #7f1ae5;
       color: #0D0D0C;
     }
+.bottom-content h1 {
+  font-size: 12vh;
+  text-shadow: 5px 5px #f5f5ff5;
+}
+.bottom-content h2 {
+  font-size: 5vh;
+  text-shadow: 3px 4px #f5f5f0;
+  font-wight: 300;
+}
+
+.bottom-content button {
+    font-size: 4vh;
+    width: 20vw;
+    height: 8vh;
+    border-radius: 10px;
+    border-width: 6px;
+    border-color: #7f1ae5;
+    font-weight: 700;
+    text-align: center;
+background-color: #f5f5f5;
+}
     #base {
   margin: 0 auto;
 height: 8vh;

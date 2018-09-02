@@ -9,7 +9,7 @@ import (
 
  var (
   CueSiteHTML = `
-{{define "site_html"}}
+{{- define "site_html" -}}
 <!DOCTYPE html>
     <html>
       <head>
@@ -23,39 +23,28 @@ import (
           <div class="top-content"></div>
         </section>
         <section id="main-container">
-          <div class="main-content">
-            <h1>{{.Header}}</h1>
-            <h2>{{.Subheader}}</h2>
-            <form action="/redirect-to-app" method="GET"><button type="submit">GO TO APP</button></form>
-          </div>
+          <div class="main-content">{{template "main_content" .}}</div>
         </section>
         <section id="bottom-container">
           <div class="bottom-content">
            <div class="gap"></div>
            <section id="app">
-          <h1>App</h1>
-          <h2>Cue is a free app</h2>
-           <div class="gap"></div>
+          <h1>What is Cue?</h1>
+          <h2>Cue is a free app. Sign in with Spotify and play music with your friends!</h2>
  </section>
-<section id="contact">
-          <h1>Contact</h1>
-          <h2>bot @ cue.zone</h2>
-
- <div class="gap"></div>
-</section>
-<section id="blog ">
-<h1>Blog</h1>
-<ul>
-  <li><h2>Playlists</h2></li>
-  <li><h2>Posts</h2></li>
-</ul>
-</section>
-</div>
-       </section> 
+ </div>
+ </section>
        <section id="base">Cue Labs 2018</section>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       </body>
     </html>
+    {{end}}
+    `
+    MainContent = `
+    {{define "main_content"}}
+    <h1>{{.Header}}</h1>
+    <h2>{{.Subheader}}</h2>
+    <form action="/redirect-to-app" method="GET"><button type="submit">GO TO APP</button></form>
     {{end}}
     `
     CueSiteCSS = `
@@ -93,15 +82,15 @@ background-color: #f5f5f5;
       padding-left: 64px;
     }
 .main-content h1 {
-    font-size: 10vh;
+    font-size: calc(72px + (24 - 16) * (100vw - 360px)/(960-360));
     font-weight: 700;
 }
 .main-content h2 {
-    font-size: 4vh;
+    font-size:  calc(24px + (24 - 16) * (100vw - 360px)/(960-360));
     padding-bottom: 24px;
 }
 .main-content button {
-    font-size: 4vh;
+    font-size: calc(24px + (24 - 16) * (100vw - 360px)/(960-360));
     width: 20vw;
     height: 8vh;
     border-radius: 10px;
@@ -114,7 +103,7 @@ background-color: #f5f5f5;
 }
     #bottom-container {
       margin: 0 auto;
-      height: 320vh;
+      height: 100vh;
       width: 100vw;
       background-color: #7f1ae5;
       color: #0D0D0C;
@@ -122,16 +111,20 @@ background-color: #f5f5f5;
 
 .bottom-content {
 display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: left;
- color: #0D0D0C;
-  width: 70vw;
+flex-direction: column;
+justify-content: center;
+text-align: left;
+color: #0D0D0C;
+width: 70vw;
 }
-.bottom-content h1 {
-  font-size: 12vh;
+.bottom-content h1, .bottom-content h2 {
+  font-size: calc(48px + (24 - 16) * (100vw - 360px)/(960-360));
   text-shadow: 2px 2px #f5f5ff5;
 padding-left: 64px;
+}
+
+.bottom-content h2 {
+  font-size: calc(24px + (24 - 16) * (100vw - 360px)/(960-360));
 }
 
 .gap {
@@ -139,33 +132,9 @@ padding-left: 64px;
   height: 28vh;
   margin: 0 auto;
 }
-.bottom-content h2 {
-  font-size: 5vh;
-  text-shadow: 5px 5px 10px #f5f5e1;
-  font-wight: 300;
-   padding-bottom: 36px;
-   padding-left: 64px;
-}
-
-.bottom-content ul {
-  
-}
-
-.bottom-content ul li {
-  list-style: none;
-  font-size: 16vh;
-  font-weight: 700;
-  width: 40vw;
-  margin: 0 auto;
-}
-
-.bottom-content ul li h2 {
-  font-size: 8vh;
-  text-shadow: 5px 5px 10px #f5f5e1;
-  font-wight: 300;
-}
     #base {
   margin: 0 auto;
+  width: 100vw;
 height: 8vh;
 background-color: #0D0D0C;
   font-weight: 700;
@@ -192,7 +161,7 @@ type mainContentVars struct {
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		t := template.New("site_html")
-		te, _ := t.Parse(CueSiteHTML + CueSiteCSS)
+		te, _ := t.Parse(CueSiteHTML + CueSiteCSS + MainContent)
 
 		cueSite := &mainContentVars{
 			"Cue Labs",
